@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "73493814667",
+    "project_id": "livetracking-10679",
+    "storage_bucket": "livetracking-10679.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:73493814667:android:ddcbcbf9d28bb8b353a38e",
+        "android_client_info": {
+          "package_name": "com.livetracking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "73493814667-phgr2ifg2dho87k95oft98c589f21dr8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMg5IgNiNkmziVE-6x3nP5HQIq772teD4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "73493814667-phgr2ifg2dho87k95oft98c589f21dr8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
