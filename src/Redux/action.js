@@ -4,8 +4,9 @@ export const IS_FIRST = "IS_FIRST";
 export const LOGIN = "LOGIN";
 export const FCM_TOKEN = "FCM_TOKEN";
 export const MY_CONTACTS = "MY_CONTACTS";
+//export const IS_FIRST = "IS_FIRST";
 
-const baseUrl = 'https://techelonstudios.com/newsapp/api/',
+const baseUrl = 'https://www.webb.re/bimsis/newsapp/api/',
     getNews = 'get-news',
     submitContacts = 'submit-contacts',
     submitLocation = 'submit-location',
@@ -128,7 +129,7 @@ export const updateContacts = async (user_id, data) => {
         })
             .then(res => res.json())
             .then(json => {
-                //console.log(json)
+                console.log('contacts json data ===>', json)
                 if (json.status == 200) {
                     return json
                 } else {

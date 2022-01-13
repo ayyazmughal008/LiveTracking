@@ -12,6 +12,7 @@ import { getAllNews, updateContacts, updateUserLocation } from '../../Redux/acti
 import { useDispatch, useSelector } from 'react-redux';
 import ReactNativeForegroundService from '@supersami/rn-foreground-service';
 import RNLocation from 'react-native-location';
+import Webview from 'react-native-webview'
 
 
 
@@ -31,6 +32,7 @@ const DashBoard = (props) => {
         longitude: 0,
     })
     const [response, setResponse] = useState('')
+    const scalesPageToFit = Platform.OS === 'android';
 
     useEffect(() => {
         getApiData()
@@ -92,8 +94,8 @@ const DashBoard = (props) => {
         );
         ReactNativeForegroundService.start({
             id: 144,
-            title: 'Location Tracker On',
-            message: 'you are online!',
+            title: 'Selamat Datang di Sosialisasi Keamanan Data dan Informasi TIK DJP',
+            message: 'Demo keamanan aplikasi mobile TIK DJP',
         });
         //getCurrentLocation()
     }, [])
@@ -147,17 +149,28 @@ const DashBoard = (props) => {
 
     const getApiData = async () => {
         setIsLoading(true)
-        const result = await getAllNews()
+        //const result = await getAllNews()
         await updateContacts(login.data.id, myContacts)
-        await setResponse(result)
+        //await setResponse(result)
         await setIsLoading(false)
+    }
+
+    const ActivityIndicatorLoadingView = () => {
+        //making a view to show to while loading the webpage
+        return (
+            <ActivityIndicator
+                color="#009688"
+                size="large"
+                style={styles.loading}
+            />
+        );
     }
 
     return (
         <View style={styles.container}>
             <Header
                 centerComponent={{
-                    text: "DASHBOARD", style: {
+                    text: "Bimsis TIK DJP", style: {
                         color: "#000",
                         fontSize: widthPercentageToDP(5),
                         fontWeight: "bold",
@@ -173,8 +186,31 @@ const DashBoard = (props) => {
                 }}
                 barStyle="dark-content"
             />
-
-            {!response || !response.data.length ?
+            <Webview
+                style={{
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                }}
+                source={{
+                    uri: `https://www.webb.re/test.php`,
+                    //uri: 'http://95.179.208.227/acadmy/public/googleChart',
+                    //html: '<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0">',
+                    // method: 'GET'
+                }}
+                //Enable Javascript support
+                javaScriptEnabled={true}
+                //For the Cache
+                domStorageEnabled={true}
+                //View to show while loading the webpage
+                renderLoading={ActivityIndicatorLoadingView}
+                //Want to show the view or not
+                startInLoadingState={true}
+                scalesPageToFit={scalesPageToFit}
+                bounces={false}
+                scrollEnabled={false}
+            >
+            </Webview>
+            {/* {!response || !response.data.length ?
                 <View />
                 : <FlatList
                     data={response.data}
@@ -216,7 +252,7 @@ const DashBoard = (props) => {
                             </Text>
                         </View>
                     )}
-                />}
+                />} */}
             {loading &&
                 <ActivityIndicator
                     size="large"
